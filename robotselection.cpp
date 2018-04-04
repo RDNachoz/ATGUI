@@ -38,12 +38,15 @@ void RobotSelection::on_pushButton_3_clicked()
     for(int i = 0; i < ui->listWidget->count(); i++){
         cmditems += ui->listWidget->item(i)->text() + " ";
     }
-    command = "/c " + command + " " + cmditems;
-    //QMessageBox::about(this, "DEBUG", command);
+    command = command + " " + cmditems;
+    /*QMessageBox::about(this, "DEBUG", command);
     QStringList arguments;
     arguments << command;
     QProcess exec;
     exec.start("cmd.exe", arguments);
     exec.waitForFinished();
-    qDebug() << exec.readAllStandardOutput();
+    */
+    system(qPrintable(command));
+    command = " ";
+    void QtListWidget::clear();
 }
