@@ -6,8 +6,10 @@
 #include <QProcess>
 #include <QDebug>
 
+#include <cstdlib>
+
 QString fName;
-QString command = "atr2.exe";
+QString command = "./atr2.exe";
 QString cmditems;
 
 RobotSelection::RobotSelection(QWidget *parent) :
@@ -35,18 +37,26 @@ void RobotSelection::on_pushButton_2_clicked()
 
 void RobotSelection::on_pushButton_3_clicked()
 {
+    command = "./atr2.exe";
+
     for(int i = 0; i < ui->listWidget->count(); i++){
         cmditems += ui->listWidget->item(i)->text() + " ";
     }
     command = command + " " + cmditems;
-    /*QMessageBox::about(this, "DEBUG", command);
-    QStringList arguments;
+    cmditems = "";
+
+    QMessageBox::about(this, "DEBUG", command);
+    /*QStringList arguments;
     arguments << command;
     QProcess exec;
     exec.start("cmd.exe", arguments);
     exec.waitForFinished();
     */
-    system(qPrintable(command));
+    std::string temp = command.toStdString();
+   system(temp.c_str());
+
+
+   ui->listWidget->clear();
     command = " ";
-    void QtListWidget::clear();
+
 }
