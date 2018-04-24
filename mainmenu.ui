@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>ATRobots MainMenu</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background: url(:C:UsersrdnacDocumentsATRobotsMenubackground.png);</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
@@ -60,7 +63,7 @@
      <string>Edit ATRobots</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>180</x>

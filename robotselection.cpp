@@ -22,6 +22,10 @@ RobotSelection::RobotSelection(QWidget *parent) :
     ui(new Ui::RobotSelection)
 {
     ui->setupUi(this);
+    QPixmap bg("background.png");
+    QPalette p;
+    p.setBrush(QPalette::Background, bg);
+    this->setPalette(p);
 }
 
 RobotSelection::~RobotSelection()

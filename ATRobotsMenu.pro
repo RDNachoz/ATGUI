@@ -38,3 +38,6 @@ FORMS += \
         mainmenu.ui \
     robotselection.ui \
     roboteditor.ui
+
+RESOURCES += \
+    background.qrc
