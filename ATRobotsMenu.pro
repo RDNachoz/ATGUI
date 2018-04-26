@@ -15,7 +15,8 @@ TEMPLATE = app
 # any feature of Qt which has been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
 # deprecated API in order to know how to port your code away from it.
-DEFINES += QT_DEPRECATED_WARNINGS
+#DEFINES += QT_DEPRECATED_WARNINGS
+CONFIG += warn_off
 
 # You can also make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -27,17 +28,21 @@ SOURCES += \
         main.cpp \
         mainmenu.cpp \
     robotselection.cpp \
-    roboteditor.cpp
+    roboteditor.cpp \
+    atrlock.cpp
 
 HEADERS += \
         mainmenu.h \
     robotselection.h \
-    roboteditor.h
+    roboteditor.h \
+    atrlock.h
 
 FORMS += \
         mainmenu.ui \
     robotselection.ui \
-    roboteditor.ui
+    roboteditor.ui \
+    atrlock.ui
 
 RESOURCES += \
-    background.qrc
+    background.qrc \
+    fonts.qrc

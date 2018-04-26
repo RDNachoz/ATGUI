@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "robotselection.h"
 #include "roboteditor.h"
+#include "atrlock.h"
 
 namespace Ui {
 class MainMenu;
@@ -22,10 +23,13 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_pushButton_3_clicked();
+
 private:
     Ui::MainMenu *mm;
-    RobotSelection *rs;
-    RobotEditor *re;
+    //RobotSelection *rs;
+    //RobotEditor *re;
+    //atrlock *lwindow;
 };
 
 #endif // MAINMENU_H

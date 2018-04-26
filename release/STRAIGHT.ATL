@@ -1,0 +1,25 @@
+;------------------------------------------------------------------------------
+; TEST ROBOT:
+; Put this against sduck and see what happens
+; in non-graphics mode.
+; *Bones* perhaps you can get better debug info
+; with this more specific problem :-)
+;------------------------------------------------------------------------------
+; STRAIGHT Lock on 4/26/2018
+;------------------------------------------------------------------------------
+#LOCK 3 C
+NYT'45&3
+$PBC^
+LF-6&D\
+JM`#D\+4563
+IE^"$EKCJ
+JYT'42!4
+JPX!$PBC^
+$EKCJ
+JYT'47(C2
+OYT'47(C2
+OYT'47(C2
+OYT'47(C2
+OYT'47(C2
+LN($PBC^
+IGJ($PBC^

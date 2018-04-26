@@ -10,7 +10,7 @@ RobotEditor::RobotEditor(QWidget *parent) :
     ui(new Ui::RobotEditor)
 {
     ui->setupUi(this);
-    QPixmap bg("background.png");
+    QPixmap bg(":/background/background.png");
     QPalette p;
     p.setBrush(QPalette::Background, bg);
     this->setPalette(p);

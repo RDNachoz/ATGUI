@@ -22,7 +22,7 @@ RobotSelection::RobotSelection(QWidget *parent) :
     ui(new Ui::RobotSelection)
 {
     ui->setupUi(this);
-    QPixmap bg("background.png");
+    QPixmap bg(":/background/background.png");
     QPalette p;
     p.setBrush(QPalette::Background, bg);
     this->setPalette(p);
@@ -36,7 +36,10 @@ RobotSelection::~RobotSelection()
 void RobotSelection::on_pushButton_clicked()
 {
     fName = QFileDialog::getOpenFileName(this, "Select your Fighter", "");
-    ui->listWidget->addItem(fName);
+    QFile f(fName);
+    QFileInfo fInfo(f.fileName());
+    cmditems += fName + " ";
+    ui->listWidget->addItem(fInfo.fileName());
 }
 
 void RobotSelection::on_pushButton_2_clicked()
@@ -66,20 +69,9 @@ void RobotSelection::on_pushButton_3_clicked()
     command = realpath("./atr2.exe", NULL);
 #endif
 
-
-
-    for(int i = 0; i < ui->listWidget->count(); i++){
-        cmditems += ui->listWidget->item(i)->text() + " ";
-    }
     command = command + " " + cmditems;
     cmditems = "";
 
-    /*QStringList arguments;
-    arguments << command;
-    QProcess exec;
-    exec.start("cmd.exe", arguments);
-    exec.waitForFinished();
-    */
     std::string temp = command.toStdString();
 
     QString qstr = QString::fromStdString(temp);

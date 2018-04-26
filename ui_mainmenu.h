@@ -29,12 +29,14 @@ class Ui_MainMenu
 {
 public:
     QWidget *centralWidget;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
-    QWidget *widget;
+    QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout;
     QLabel *label;
     QLabel *label_2;
+    QVBoxLayout *verticalLayout_2;
+    QPushButton *pushButton_3;
+    QPushButton *pushButton_2;
+    QPushButton *pushButton;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -44,50 +46,69 @@ public:
         if (MainMenu->objectName().isEmpty())
             MainMenu->setObjectName(QStringLiteral("MainMenu"));
         MainMenu->resize(640, 480);
+        MainMenu->setStyleSheet(QStringLiteral("background: url(:C:UsersrdnacDocumentsATRobotsMenubackground.png);"));
         centralWidget = new QWidget(MainMenu);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        pushButton = new QPushButton(centralWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(210, 240, 231, 71));
+        verticalLayout_3 = new QVBoxLayout(centralWidget);
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setSpacing(6);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        label = new QLabel(centralWidget);
+        label->setObjectName(QStringLiteral("label"));
         QFont font;
         font.setFamily(QStringLiteral("ROG Fonts v1.6"));
-        font.setPointSize(19);
-        font.setBold(true);
-        font.setWeight(75);
-        pushButton->setFont(font);
-        pushButton->setLayoutDirection(Qt::LeftToRight);
-        pushButton->setFlat(false);
-        pushButton_2 = new QPushButton(centralWidget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(210, 160, 231, 71));
-        QFont font1;
-        font1.setFamily(QStringLiteral("ROG Fonts v1.6"));
-        font1.setPointSize(20);
-        pushButton_2->setFont(font1);
-        widget = new QWidget(centralWidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(180, 0, 260, 51));
-        verticalLayout = new QVBoxLayout(widget);
-        verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget);
-        label->setObjectName(QStringLiteral("label"));
-        QFont font2;
-        font2.setFamily(QStringLiteral("ROG Fonts v1.6"));
-        font2.setPointSize(19);
-        label->setFont(font2);
+        font.setPointSize(33);
+        label->setFont(font);
         label->setAutoFillBackground(false);
-        label->setAlignment(Qt::AlignCenter);
+        label->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
 
         verticalLayout->addWidget(label);
 
-        label_2 = new QLabel(widget);
+        label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setAlignment(Qt::AlignCenter);
+        label_2->setAlignment(Qt::AlignHCenter|Qt::AlignTop);
 
         verticalLayout->addWidget(label_2);
+
+
+        verticalLayout_3->addLayout(verticalLayout);
+
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        pushButton_3 = new QPushButton(centralWidget);
+        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        QFont font1;
+        font1.setFamily(QStringLiteral("ROG Fonts v1.6"));
+        font1.setPointSize(20);
+        pushButton_3->setFont(font1);
+
+        verticalLayout_2->addWidget(pushButton_3);
+
+        pushButton_2 = new QPushButton(centralWidget);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setFont(font1);
+
+        verticalLayout_2->addWidget(pushButton_2);
+
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        QFont font2;
+        font2.setFamily(QStringLiteral("ROG Fonts v1.6"));
+        font2.setPointSize(19);
+        font2.setBold(true);
+        font2.setWeight(75);
+        pushButton->setFont(font2);
+        pushButton->setLayoutDirection(Qt::LeftToRight);
+        pushButton->setFlat(false);
+
+        verticalLayout_2->addWidget(pushButton);
+
+
+        verticalLayout_3->addLayout(verticalLayout_2);
 
         MainMenu->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainMenu);
@@ -109,10 +130,11 @@ public:
     void retranslateUi(QMainWindow *MainMenu)
     {
         MainMenu->setWindowTitle(QApplication::translate("MainMenu", "ATRobots MainMenu", nullptr));
-        pushButton->setText(QApplication::translate("MainMenu", "Select ATRobots", nullptr));
-        pushButton_2->setText(QApplication::translate("MainMenu", "Edit ATRobots", nullptr));
         label->setText(QApplication::translate("MainMenu", "ATRobots Remastered", nullptr));
-        label_2->setText(QApplication::translate("MainMenu", "GUI V0.0.1", nullptr));
+        label_2->setText(QApplication::translate("MainMenu", "GUI V0.1.1", nullptr));
+        pushButton_3->setText(QApplication::translate("MainMenu", "Lock ATRobots", nullptr));
+        pushButton_2->setText(QApplication::translate("MainMenu", "Edit ATRobots", nullptr));
+        pushButton->setText(QApplication::translate("MainMenu", "Select ATRobots", nullptr));
     } // retranslateUi
 
 };
