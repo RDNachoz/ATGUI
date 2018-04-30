@@ -21,19 +21,8 @@ using namespace std;
 string copy(string name, uint16_t start, uint16_t amount) {
     string temp = "";
 
-    // err_log << "Begin Copy" << endl;
-    // err_log << "Starting name: " << name << endl;
-    // err_log << "start: " << to_string(start) << "\tcount: " << to_string(count) << endl;
-
-    //cout << "name is " << name << endl;
-    //cout << "amount is " << amount << endl;
-    //cout << "start is " << start << endl;
     temp = name.substr(start, amount);
 
-
-
-    // err_log << "Ending name: " << temp << endl << "End copy" << endl;
-    //cout << "Temp is " << temp << endl;
     return temp;
 }
 
@@ -45,7 +34,6 @@ string lstr(string s1, uint16_t l) {
 }
 
 std::string base_name(std::string name) {
-    // err_log << "Begin base_name" << endl;
     uint16_t k;
     string s1;
 
@@ -60,35 +48,16 @@ std::string base_name(std::string name) {
             break;
     }
 
-    // err_log << "End base_name" << endl;
     return s1;
 }
 
 string no_path(string fn) {
-    /* err_log << "Begin no_path" << endl;
-    uint16_t i, k;
-    k = 0;
-    cout << to_string(fn.length()) << endl;
-    for (i = 0; i < fn.length(); i++) {
-        if (((fn[i] == '\\') || (fn[i] == '/') || (fn[i] == ':'))) {
-            k = i;
-        }
-    }
-    // err_log << "End no_path (Before returning)" << endl;
-    cout << "K is " << k << endl;
-    k = fn.length() - k;
-    cout << "\tK is " << k << endl;
-    if (k != 0)
-        return (rstr(fn, fn.length() - k));
-    else
-        return (fn);
-        */
+
     return (fn.substr(fn.find_last_of("/\\")+1));
 
 }
 
 string ltrim(string s1) {
-    // err_log << "Begin ltrim" << endl;
     while (s1.size() && isspace(s1.front()))
         s1.erase(s1.begin());
 
@@ -96,7 +65,6 @@ string ltrim(string s1) {
 }
 
 string rtrim(string s1) {
-    // err_log << "Begin rtrim" << endl;
     while (!s1.empty() && isspace(s1.at(s1.size() - 1)))
         s1.erase(s1.end() - 1);
 
@@ -104,7 +72,6 @@ string rtrim(string s1) {
 }
 
 string btrim(string s1) {
-    // err_log << "Begin btrim" << endl;
 
     s1 = ltrim(s1);
     s1 = rtrim(s1);
@@ -122,7 +89,6 @@ string ucase(string s) {
 string encode(string s) {
     int16_t	i;
     static int count = 1;
-    //cout << "atrlock encode section: s is '" << s <<"'" << endl;
     if (lock_code.compare("")) {
         for (i = 0; i < s.length(); i++) {
             lock_pos++;
@@ -135,22 +101,16 @@ string encode(string s) {
             }
 
             this_dat = ((unsigned char)s[i]) & 15;
-            cout << s[i] << endl;
             s[i] = char((((unsigned char) s[i]) ^ (lock_code[lock_pos] ^ lock_dat)) + 1);
-            cout << "\t" << s[i] << endl;
             lock_dat = this_dat;
-            //f2 << "Lock_dat is: " << lock_dat << endl;
         }
     }
-    //cout << "#######################################";
-    //cout << count++ << " " << s << endl;
     return s;
 }
 
 string prepare(string s, string s1) {
     int16_t i, k;
     string s2;
-    //cout << "atrlock prepare: s1 is '" << s1.length() << "'" << endl;
     // remove comments
     if ((s1.length() == 0) || (s1[0] == ';')) {
         s1 = "";
@@ -161,16 +121,13 @@ string prepare(string s, string s1) {
         for (i = (s1.length()-1); i >= 0; i--) {
             if (s1[i] == ';')
                 k = i+1;
-            //cout << "prepare K value is: " << k << endl;
         }
 
         if (k > 0)
             s1 = lstr(s1, k - 1);
-        //cout << "prepare s1 after lstr is '" << s1.length() << "'\t" << s1 << endl;
     }
 
     // remove excess spaces
-    //cout << "excess spaces s1 is: " << s1.length() << ": " << s1 << endl;
     s2 = "";
     for (i = 0; i < s1.length(); i++) {
         if (!((s1[i] == ' ') || (s1[i] == 8) || (s1[i] == 9) || (s1[i] == 10) || (s1[i] == ','))) {
@@ -183,17 +140,13 @@ string prepare(string s, string s1) {
             }
         }
     }
-    //cout << "prepare s is: '" << s.length() << "'" << endl;
     if (s2.compare(""))
         s = s + s2;
-    //cout << "prepare s after compare is: '" << s.length() << ":" << s << "'" << endl;
     return s;
 }
 
 void write_line(string s, string s1) {
-    //cout << "atrlock write_line: s1 is '" << s1 << "'" << endl;
     s = prepare(s, s1);
-    //cout << "write_line: s is '" << s << "'" << endl;
     if (s.length() > 0) {
         s = encode(s);
         f2 << s << endl;
@@ -288,12 +241,9 @@ void atrlock::on_lockRobot_clicked()
         write_line("", ucase(s));
     while (!f1.eof()) {
         std::getline(f1, s1);
-        //f2 << "Input read in: " << s1.length() << endl;
         s = "";
         s1 = btrim(ucase(s1));
-        //cout << "atrlock main before encode is: '" << s1 << "'" << endl;
         write_line(s, s1);
-        //f2 << "Main: lock_dat is: " << lock_dat << endl;
     }
 
     ui->progressBar->setValue(75);
