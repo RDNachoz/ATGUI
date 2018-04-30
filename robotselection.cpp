@@ -10,11 +10,22 @@
 #ifdef _WIN32
     #include <Windows.h>
 #endif
+#ifdef __linux__
+    #include <stdlib.h>
+#endif
 
 #include <stdlib.h>
 
 QString fName;
-QString command = "atr2.exe";
+#ifdef _WIN32
+    QString command = "atr2.exe";
+#endif
+#ifdef __linux__
+    QString command = "./atr2.exe";
+#endif
+#ifdef __unix__
+    QString command = "./atr2.exe";
+#endif
 QString cmditems;
 
 RobotSelection::RobotSelection(QWidget *parent) :
